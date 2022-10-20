@@ -17,6 +17,14 @@ const firebaseConfig = {
   storageBucket: firebaseStorageBucket,
 }
 
+// validated config
+const keysWithEmptyValues = Object.entries(firebaseConfig)
+  .filter(([k, v]) => !v)
+  .map(([k]) => k)
+  .join(', ');
+
+if(keysWithEmptyValues) throw new Error(`These keys must be filled in ROOT_DIR/env.local before starting the app: ${keysWithEmptyValues}`);
+
 const app = initializeApp(firebaseConfig)
 const db = getFirestore(app)
 const auth = getAuth(app)

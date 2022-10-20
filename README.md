@@ -1,4 +1,4 @@
-# React Solo Project
+# React Project
 
 ## Requirements
 
